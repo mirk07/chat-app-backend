@@ -12,7 +12,6 @@ dotenv.config();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "/public/build")));
 app.use("/api/auth", userRoutes);
 app.use("/api/messages", messagesRoutes);
 
@@ -32,8 +31,8 @@ const server = app.listen(process.env.PORT, () =>
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:5000",
-    credentials: true,
+    origin: "*",
+    credentials: "true",
   },
 });
 
